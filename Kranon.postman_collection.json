@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "de1fe4c0-cf1f-4b5d-8dcf-f4533269c8fe",
+		"name": "Kranon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5971/api/Libro/GetAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"RFC\": \"PASM980131KT6\",\r\n    \"FechaInicioOperacion\": \"2022-06-10T06:50:00\",\r\n    \"Capital\": 4300.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5971/api/Libro/GetAll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5971",
+					"path": [
+						"api",
+						"Libro",
+						"GetAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5971/api/Libro/Add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"Titulo\": \"El alquimista \",\r\n            \"AñoPublicacion\": \"1988\",\r\n            \"NumeroPaginas\": \"272\",\r\n            \"Descripcion\": \"En Andalucía, un joven pastor pasea por las llanuras contemplando la naturaleza. El joven Santiago tiene un sueño repetido mientras descansa con sus ovejas en un pasto andaluz, por lo que decide acudir a una gitana para que le interprete el sueño. Después de quedar descontento con la respuesta que recibe, se sienta en un banco de la plaza a leer un libro y conoce a un anciano que dice ser el rey de Salem\",\r\n            \"Imagen\": \"\",\r\n            \"Autor\": {\r\n                \"IdAutor\": 1\r\n            },\r\n            \"Editorial\": {\r\n                \"IdEditorial\": 4,\r\n            },\r\n            \"Genero\": {\r\n                \"IdGenero\": 2,\r\n            }\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5971/api/Libro/Add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5971",
+					"path": [
+						"api",
+						"Libro",
+						"Add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5971/api/Libro/GetById/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5971/api/Libro/GetById/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5971",
+					"path": [
+						"api",
+						"Libro",
+						"GetById",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5971/api/Libro/Delete/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5971/api/Libro/Delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5971",
+					"path": [
+						"api",
+						"Libro",
+						"Delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
