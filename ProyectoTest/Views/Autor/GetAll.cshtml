@@ -1,0 +1,48 @@
+﻿@model ML.Autor
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>AUTORES</h2>
+<h5>Catálogo de autores</h5>
+<hr />
+
+<div class="row">
+    <div>
+        <div style="float:right;">
+            <br />
+            @Html.ActionLink("Añadir Autor", "Form", "Autor", htmlAttributes: new { @class = "btn btn-success" })
+
+        </div>
+        <br />
+    </div>
+
+</div>
+
+<br />
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <td>Editar</td>
+            <td>Nombre</td>
+            <td>Fecha de Nacimiento</td>
+            <td>Lugar de Nacimiento</td>
+            <td>Eliminar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Autor autor in Model.Autores)
+        {
+            <tr>
+                <td><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Autor", new { IdAutor = autor.IdAutor })"><i class="bi bi-pencil-square"></i></a></td>
+                <td>@autor.NombreCompleto</td>
+                <td>@autor.FechaNacimiento</td>
+                <td>@autor.LugarNacimiento</td>
+                <td><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Autor", new { IdAutor = autor.IdAutor })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>

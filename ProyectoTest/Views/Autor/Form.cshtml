@@ -1,0 +1,92 @@
+﻿@model ML.Autor
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+
+<br />
+<h2>Autor</h2>
+<h5>Ingrese los datos del autor</h5>
+<hr />
+
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Form", "Autor", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <div class="col-md-3" style="display: none;">
+                            @Html.LabelFor(model => model.IdAutor, new { @class = "hidden" })
+                            @Html.TextBoxFor(model => model.IdAutor, new { @class = "hidden form-control", @autocomplete = "off" })
+                            @Html.ValidationMessageFor(model => model.IdAutor)
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.Nombre)
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre" })
+                        @Html.ValidationMessageFor(model => model.Nombre)
+                        <br />
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.LugarNacimiento)
+                        @Html.TextBoxFor(model => model.LugarNacimiento, new { @class = "form-control", @id = "txtLugarNacimiento" })
+                        @Html.ValidationMessageFor(model => model.LugarNacimiento)
+                        <br />
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ApellidoPaterno)
+                        @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @id = "txtApellidoMaterno" })
+                        @Html.ValidationMessageFor(model => model.ApellidoPaterno)
+                        <br />
+                    </div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                            @Html.LabelFor(model => model.FechaNacimiento)
+                            @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control", @id = "txtFecha", @autocomplete = "false" })
+                            @Html.ValidationMessageFor(model => model.FechaNacimiento)
+                        <br />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ApellidoMaterno)
+                        @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", @id = "txtApellidoPaterno" })
+                        @Html.ValidationMessageFor(model => model.ApellidoMaterno)
+                        <br />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <br />
+                        <input type="submit" value="Guardar" class="btn btn-success" />
+                        @Html.ActionLink("Regresar", "GetAll", "Autor", htmlAttributes: new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(function () { $("#txtFecha").datepicker({ changeMonth: true, changeYear: true }); });
+    </script>
+}

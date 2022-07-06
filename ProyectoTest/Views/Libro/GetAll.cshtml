@@ -1,0 +1,68 @@
+﻿@model ML.Libro
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<h2>LIBROS</h2>
+<h5>Catálogo de libros</h5>
+<hr />
+<div class="row">
+    <div>
+        <div style="float:right;">
+            @Html.ActionLink("Añadir Libro", "Form", "Libro", htmlAttributes: new { @class = "btn btn-success" })
+
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    @using (Html.BeginForm("GetAll", "Libro", FormMethod.Post, new { enctype = "multipart/from-data" }))
+    {
+        <div class="row g-2">
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Titulo)
+                @Html.TextBoxFor(model => model.Titulo, new { @class = "form-control", @id = "txtTitulo" })
+                @Html.ValidationMessageFor(model => model.Titulo)
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Autor.Nombre)
+                @Html.TextBoxFor(model => model.Autor.Nombre, new { @class = "form-control", @id = "txtNombre" })
+                @Html.ValidationMessageFor(model => model.Autor.Nombre)
+            </div>
+            <div class="col-md-3" style="margin-top: 30px;">
+                <input type="submit" value="Buscar" class="btn btn-success">
+            </div>
+        </div>
+    }
+</div>
+<br/>
+<div class="row g-3">
+    @foreach (ML.Libro libro in Model.Libros)
+    {
+        <div class="col-md-4">
+            <div class="card text-white bg-dark border-warning mb-3 border-4" style="width: 18rem;">
+                @if (libro.Imagen.Length > 0)
+                {
+                    <img src="data:image\jpg;base64,@Convert.ToBase64String(libro.Imagen)" class="card-img-top">
+                }
+                else
+                {
+                    <img src="~/Imagenes/sinimagen.jpg" width="280px" height="200px" id="Img" />
+                }
+
+            <div class="card-body">
+                <h5 class="card-title text-center bg-secondary">@libro.Titulo</h5>
+                <p class="card-text">Año de Publicación: @libro.AñoPublicacion</p>
+                <p class="card-text">Editorial: @libro.Editorial.Nombre</p>
+                <p class="card-text">Autor: @libro.Autor.NombreCompleto</p>
+                <p class="card-text">Genero: @libro.Genero.Nombre</p>
+                <p class="card-text">Numero de paginas: @libro.NumeroPaginas</p>
+                <a class="btn btn-success" href="@Url.Action("Form", "libro", new { IdLibro = libro.IdLibro })">Informacion</a>
+                <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Libro", new { IdLibro = libro.IdLibro })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"><i class="bi bi-trash"></i></a>
+            </div>
+            </div>
+        </div>
+    }
+</div>

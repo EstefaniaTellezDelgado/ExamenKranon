@@ -1,0 +1,43 @@
+﻿@model ML.Genero
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>GENEROS</h2>
+<h5>Catálogo de generos</h5>
+<hr />
+
+<div class="row">
+    <div>
+        <div style="float:right;">
+            @Html.ActionLink("Añadir Genero", "Form", "Genero", htmlAttributes: new { @class = "btn btn-success" })
+            <br />
+            <br />
+        </div>
+    </div>
+
+</div>
+
+
+<table class="table table-bordered table-hover d-sm-table-cell table-sm table-responsive">
+    <thead>
+        <tr>
+            <td>Editar</td>
+            <td>Nombre</td>
+            <td>Eliminar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Genero genero in Model.Generos)
+        {
+            <tr>
+                <td><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Genero", new { IdGenero = genero.IdGenero })"><i class="bi bi-pencil-square"></i></a></td>
+                <td style="display : none">@genero.IdGenero</td>
+                <td>@genero.Nombre</td>
+                <td><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Genero", new { IdGenero = genero.IdGenero })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        }
+    </tbody>
+</table>

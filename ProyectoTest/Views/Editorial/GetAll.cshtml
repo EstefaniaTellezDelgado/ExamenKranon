@@ -1,0 +1,46 @@
+﻿@model ML.Editorial
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>EDITORIALES</h2>
+<h5>Catálogo de editoriales</h5>
+<hr />
+
+<div class="row">
+    <div>
+        <div style="float:right;">
+            @Html.ActionLink("Añadir Editorial", "Form", "Editorial", htmlAttributes: new { @class = "btn btn-success" })
+            <br />
+            <br />
+        </div>
+    </div>
+
+</div>
+
+
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <td>Editar</td>
+            <td>Nombre</td>
+            <td>Direccion</td>
+            <td>Eliminar</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Editorial editorial in Model.Editoriales)
+        {
+            <tr>
+                <td><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Editorial", new { IdEditorial = editorial.IdEditorial })"><i class="bi bi-pencil-square"></i></a></td>
+                <td>@editorial.Nombre</td>
+                <td>@editorial.Direccion</td>
+                <td><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Editorial", new { IdEditorial = editorial.IdEditorial })" onclick="return confirm('¿Estas seguro que deseas eliminar este registro?');"><i class="bi bi-trash"></i></a></td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
